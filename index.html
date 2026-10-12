@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real Digital School | RDS</title>
+<style>
+:root{--navy:#10244a;--blue:#1769e0;--sky:#eaf3ff;--gold:#ffc857;--ink:#18243a;--muted:#64748b;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari",Arial,sans-serif;background:#f4f7fc;color:var(--ink)}
+header{background:linear-gradient(120deg,#10244a,#1769e0);color:white;padding:22px 16px 28px}
+.wrap{max-width:1050px;margin:auto}.brand{display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;border-radius:16px;background:var(--gold);color:#10244a;display:grid;place-items:center;font-weight:900;font-size:20px}.brand h1{font-size:clamp(22px,4vw,34px);margin:0}.brand p{margin:4px 0 0;color:#dbeafe}.hero{padding:24px 0 6px}.hero h2{font-size:clamp(25px,5vw,42px);margin:8px 0}.hero p{max-width:700px;line-height:1.7;color:#e6efff}
+main{padding:20px 14px 50px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.card{background:white;border:1px solid #e1e8f2;border-radius:18px;padding:18px;box-shadow:0 5px 20px #1e3a8a0a}.card h3{margin:0 0 8px}.muted{color:var(--muted);line-height:1.55}.pill{display:inline-block;background:#eaf3ff;color:#174ea6;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700}
+label{display:block;font-weight:700;margin:12px 0 6px}select,input,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:10px;background:white;font:inherit}button{border:0;border-radius:11px;background:var(--blue);color:white;font-weight:750;padding:12px 15px;font:inherit;cursor:pointer}button.secondary{background:#e8eef8;color:#17345f}button.gold{background:var(--gold);color:#1d2b46}.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1;min-width:120px}.notice{background:#fff8e5;border:1px solid #ffe0a3;padding:12px 14px;border-radius:12px;line-height:1.6}.hidden{display:none}.result{background:#f0fdf4;border:1px solid #bbf7d0;padding:14px;border-radius:12px;margin-top:12px}.chatlog{height:190px;overflow:auto;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;white-space:pre-wrap}.small{font-size:13px}footer{text-align:center;color:#64748b;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="brand"><div class="logo">RDS</div><div><h1>Real Digital School</h1><p>Your Real School. Your Digital World.</p></div></div>
+ <div class="hero"><span class="pill">DEMO • कक्षा 1–12</span><h2>आपका डिजिटल स्कूल शुरू होता है यहाँ!</h2><p>पढ़ाई, अभ्यास, परीक्षा और प्रगति—एक ही जगह। यह शुरुआती डेमो है; अभी इसमें वास्तविक AI API, ऑनलाइन अकाउंट या भुगतान कनेक्ट नहीं है।</p></div>
+</div></header>
+<main class="wrap">
+ <div class="notice"><strong>महत्वपूर्ण:</strong> यह डेमो फोन पर सीधे <code>index.html</code> खोलकर देखा जा सकता है। इसमें दर्ज नाम/अंक केवल इसी ब्राउज़र में डेमो के लिए हैं—इसे असली स्कूल रिकॉर्ड या मान्यता प्राप्त प्रमाणपत्र न मानें।</div>
+ <section class="grid" style="margin-top:16px">
+  <article class="card"><span class="pill">01 • विद्यार्थी</span><h3>अपनी कक्षा चुनें</h3><p class="muted">कक्षा 1 से 12 तक चुनकर डेमो डैशबोर्ड देखें।</p><label for="grade">कक्षा</label><select id="grade"></select><label for="student">विद्यार्थी का नाम</label><input id="student" placeholder="अपना नाम लिखें"><button style="margin-top:12px;width:100%" onclick="showDashboard()">स्कूल में प्रवेश करें</button><p id="welcome" class="muted"></p></article>
+  <article class="card"><span class="pill">02 • AI टीचर डेमो</span><h3>टीचर से सवाल पूछें</h3><p class="muted">यह ऑफलाइन नमूना है जिसमें कुछ सामान्य सवालों के तैयार जवाब हैं। असली AI जोड़ने के लिए सुरक्षित बैकएंड/API सेटअप चाहिए।</p><label for="question">आपका सवाल</label><textarea id="question" rows="3" placeholder="जैसे: भिन्न क्या होता है?"></textarea><button style="margin-top:10px" onclick="askTeacher()">टीचर से पूछें</button><div id="teacherAnswer" class="result hidden"></div></article>
+  <article class="card"><span class="pill">03 • परीक्षा</span><h3>गणित की छोटी परीक्षा</h3><p class="muted">उत्तर चुनें और डेमो स्कोर देखें।</p><div id="quiz"></div><button style="margin-top:12px" onclick="gradeQuiz()">उत्तर जाँचें</button><div id="quizResult" class="result hidden"></div></article>
+  <article class="card"><span class="pill">04 • रिपोर्ट कार्ड</span><h3>डेमो रिपोर्ट कार्ड</h3><p class="muted">परीक्षा के बाद यहाँ आपका डेमो परिणाम दिखेगा।</p><div id="report" class="muted">पहले परीक्षा दें।</div><button class="secondary" style="margin-top:12px" onclick="window.print()">रिपोर्ट/पेज प्रिंट करें</button></article>
+ </section>
+ <section class="grid" style="margin-top:14px">
+  <article class="card"><span class="pill">05 • स्कूल जीवन</span><h3>डिजिटल घर और स्कूल</h3><p class="muted">भविष्य के संस्करण में घर, कैंपस, क्लासरूम और अवतार जोड़े जा सकते हैं।</p><div class="row"><button class="secondary" onclick="alert('डेमो: आपका डिजिटल घर। 3D घर अगले संस्करण में जोड़ा जाएगा।')">मेरा घर</button><button class="secondary" onclick="alert('डेमो: आप स्कूल पहुँच गए!')">स्कूल जाएँ</button></div></article>
+  <article class="card"><span class="pill">06 • डायमंड</span><h3>वाहन अनलॉक डेमो</h3><p class="muted">यह केवल डेमो बटन है। कोई असली पेमेंट नहीं होगा और कोई पैसा न भेजें।</p><p><strong>डायमंड:</strong> <span id="diamonds">0</span></p><div class="row"><button class="gold" onclick="unlockVehicle('बाइक',10)">बाइक • 10 💎</button><button class="gold" onclick="unlockVehicle('कार',25)">कार • 25 💎</button></div><button class="secondary" style="margin-top:10px" onclick="earnDemoDiamonds()">डेमो डायमंड +30</button><p id="vehicleMsg" class="muted"></p></article>
+ </section>
+ <p class="small muted" style="margin-top:18px">RDS शुरुआती फ्रंटएंड प्रोटोटाइप। बच्चों की वास्तविक सेवा शुरू करने से पहले अभिभावक सहमति, डेटा सुरक्षा, मॉडरेशन, बैकअप, पाठ्यक्रम समीक्षा और सर्वर-साइड सुरक्षा लागू करनी होगी।</p>
+</main>
+<footer>© RDS • Real Digital School — Prototype</footer>
+<script>
+const grade=document.getElementById('grade');
+for(let i=1;i<=12;i++){let o=document.createElement('option');o.value=i;o.textContent='कक्षा '+i;grade.appendChild(o)}
+const qs=[{q:'1. 7 + 5 = ?',opts:['10','12','13'],a:1},{q:'2. 3 × 4 = ?',opts:['7','12','14'],a:1},{q:'3. 20 में से 8 घटाएँ = ?',opts:['12','13','14'],a:0}];
+const quiz=document.getElementById('quiz');
+qs.forEach((x,i)=>{let d=document.createElement('div');d.style.margin='12px 0';d.innerHTML='<strong>'+x.q+'</strong>';x.opts.forEach((v,j)=>{d.innerHTML+='<label style="font-weight:400;margin:5px 0"><input style="width:auto" type="radio" name="q'+i+'" value="'+j+'"> '+v+'</label>'});quiz.appendChild(d)});
+let lastScore=null, diamonds=0, studentName='';
+function showDashboard(){studentName=document.getElementById('student').value.trim()||'विद्यार्थी';document.getElementById('welcome').textContent='नमस्ते '+studentName+'! आप कक्षा '+grade.value+' के डेमो डैशबोर्ड में हैं।'}
+function askTeacher(){let q=document.getElementById('question').value.toLowerCase();let ans='अच्छा सवाल! इसे छोटे-छोटे चरणों में समझने की कोशिश करें। इस डेमो में सीमित उत्तर हैं; वास्तविक AI शिक्षक अभी कनेक्ट नहीं है।';if(q.includes('भिन्न')||q.includes('fraction'))ans='भिन्न किसी पूरे भाग का हिस्सा बताता है। उदाहरण: पिज़्ज़ा के 4 बराबर टुकड़ों में से 1 टुकड़ा = 1/4।';else if(q.includes('गुरुत्व')||q.includes('gravity'))ans='गुरुत्वाकर्षण वह बल है जो वस्तुओं को एक-दूसरे की ओर खींचता है। पृथ्वी इसी बल से हमें अपनी सतह पर रखती है।';else if(q.includes('भारत की राजधानी')||q.includes('capital of india'))ans='भारत की राजधानी नई दिल्ली है।';else if(q.includes('7')&&q.includes('5'))ans='7 + 5 = 12। 7 से शुरू करके पाँच आगे गिनें: 8, 9, 10, 11, 12।';let box=document.getElementById('teacherAnswer');box.textContent='टीचर: '+ans;box.classList.remove('hidden')}
+function gradeQuiz(){let score=0;qs.forEach((x,i)=>{let a=document.querySelector('input[name="q'+i+'"]:checked');if(a&&Number(a.value)===x.a)score++});lastScore=score;let pct=Math.round(score/qs.length*100);let status=pct>=33?'डेमो में उत्तीर्ण':'अधिक अभ्यास की जरूरत';document.getElementById('quizResult').textContent='आपके अंक: '+score+'/'+qs.length+' ('+pct+'%) — '+status;document.getElementById('quizResult').classList.remove('hidden');let name=studentName||document.getElementById('student').value.trim()||'विद्यार्थी';document.getElementById('report').innerHTML='<strong>RDS डेमो रिपोर्ट कार्ड</strong><br>नाम: '+escapeHtml(name)+'<br>कक्षा: '+grade.value+'<br>गणित अभ्यास: '+score+'/'+qs.length+'<br>प्रतिशत: '+pct+'%<br>स्थिति: '+status+'<br><span class="small">यह अभ्यास-डेमो है, आधिकारिक परिणाम नहीं।</span>'}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function earnDemoDiamonds(){diamonds+=30;document.getElementById('diamonds').textContent=diamonds;document.getElementById('vehicleMsg').textContent='डेमो डायमंड जोड़े गए। कोई वास्तविक मूल्य नहीं।'}
+function unlockVehicle(name,cost){let msg=document.getElementById('vehicleMsg');if(diamonds>=cost){diamonds-=cost;document.getElementById('diamonds').textContent=diamonds;msg.textContent='डेमो में '+name+' अनलॉक हो गई!'}else msg.textContent='पहले डेमो डायमंड जोड़ें। कोई वास्तविक पेमेंट न करें।'}
+</script>
+</body>
+</html>
